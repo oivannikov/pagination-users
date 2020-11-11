@@ -1,0 +1,16 @@
+.users {
+  display: flex;
+  justify-content: center;
+}
+
+.user {
+  margin: 0 10px;
+  cursor: pointer;
+  border: 2px solid blue;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.user:hover {
+  box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+}
