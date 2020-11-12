@@ -14,7 +14,7 @@ export async function deleteUser(userId) {
 }
 
 export async function createdUser(user) {
-  return axios.post(`${BASE_URL}/users`, user);
+  return axios.post(`${BASE_URL}/users`, user, config);
 }
 
 export async function editCurrentUser(userId, user) {
