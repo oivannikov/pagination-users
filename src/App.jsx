@@ -42,6 +42,12 @@ function App() {
     setModalActive(true);
   }
 
+  function checkLastUser() {
+    if (currentUsers.length === 1) {
+      setCurrentPage(prev => prev - 1);
+    }
+  }
+
   const usersPerPage = 5;
   const countPages = Math.ceil(users.length / usersPerPage);
   const indexOfLastUser = currentPage * usersPerPage;
@@ -53,7 +59,12 @@ function App() {
       <Users users={currentUsers} handleSelectedUser={handleSelectedUser} />
 
       <Modal active={modalActive} setActive={setModalActive}>
-        <SelectedUser setModalActive={setModalActive} currentUser={currentUser} upDateUsers={upDateUsers} />
+        <SelectedUser
+          setModalActive={setModalActive}
+          currentUser={currentUser}
+          upDateUsers={upDateUsers}
+          checkLastUser={checkLastUser} 
+        />
       </Modal>
 
       <CreateUser upDateUsers={upDateUsers}/>

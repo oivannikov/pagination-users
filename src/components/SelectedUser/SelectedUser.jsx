@@ -6,7 +6,7 @@ import { deleteUser, editCurrentUser } from '../../api/users';
 
 import './SelectedUser.css';
 
-export function SelectedUser({ setModalActive, currentUser, upDateUsers}) {
+export function SelectedUser({ setModalActive, currentUser, upDateUsers, checkLastUser}) {
   const { name, surname, desc, id } = currentUser;
   const [currentName, setCurrentName] = useState(name);
   const [currentSurname, setCurrentSurname] = useState(surname);
@@ -37,6 +37,7 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers}) {
   async function handleDeleteUser(e) {
     e.preventDefault();
     await deleteUser(id);
+    checkLastUser();
     upDateUsers();
     setModalActive(false);
   }
