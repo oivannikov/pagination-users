@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { deleteUser, editCurrentUser } from '../../api/users';
+import PropTypes from 'prop-types';
 
-import { upDateUsers } from '../../App';
+import { deleteUser, editCurrentUser } from '../../api/users';
 
 import './SelectedUser.css';
 
@@ -11,21 +11,6 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers}) {
   const [currentName, setCurrentName] = useState(name);
   const [currentSurname, setCurrentSurname] = useState(surname);
   const [currentDesc, setCurrentDesc] = useState(desc);
-
-  function handleInputName(e) {
-    e.preventDefault();
-    setCurrentName(e.target.value);
-  }
-
-  function handleInputSurname(e) {
-    e.preventDefault();
-    setCurrentSurname(e.target.value);
-  }
-
-  function handleInputDesc(e) {
-    e.preventDefault();
-    setCurrentDesc(e.target.value);
-  }
 
   async function handleSaveButton(e) {
     e.preventDefault();
@@ -71,7 +56,8 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers}) {
             <input  
               type="text"
               value={currentName}
-              onChange={(e) => handleInputName(e)}
+              onChange={({ target }) =>  setCurrentName(target.value)}
+              required
             />
           </div>
 
@@ -79,21 +65,22 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers}) {
             <input
               type="text"
               value={currentSurname}
-              onChange={(e) => handleInputSurname(e)}
+              onChange={({target}) => setCurrentSurname(target.value)}
+              required
             />
           </div>
-      </div>
+        </div>
 
-       <div className="info__user-description">
-        <textarea
-          className="info__user-text"
-          type="textarea"
-          name="info"
-          value={currentDesc}
-          onChange={(e) => handleInputDesc(e)}
-          required
-        ></textarea>
-       </div>
+        <div className="info__user-description">
+          <textarea
+            className="info__user-text"
+            type="textarea"
+            name="info"
+            value={currentDesc}
+            onChange={({ target }) => setCurrentDesc(target.value)}
+            required
+          ></textarea>
+        </div>
       </div>
 
       <div className="info__user-buttons">
@@ -107,5 +94,11 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers}) {
         </div>
       </div>
     </div>
-  )
+  );
+}
+
+SelectedUser.propTypes = {
+  setModalActive: PropTypes.func.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  upDateUsers: PropTypes.func.isRequired,
 }

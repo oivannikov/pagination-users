@@ -62,4 +62,10 @@
   padding: 6px 22px;
 }
 
+.info__user-save:hover {
+  background-color: #80cbc4;
+}
 
+.info__user-save:active {
+  background-color: #00bfa5;
+}

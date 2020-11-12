@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import PropTypes from 'prop-types';
+
 import { createdUser } from '../../api/users';
 
 import './CreateUser.css';
@@ -23,27 +25,11 @@ export function CreateUser({ upDateUsers }) {
        await createdUser(user);
        upDateUsers();
     }
+
     setName('');
     setSurname('');
     setDesc('');
   }
-
-  function handleChangeName(e) {
-    e.preventDefault();
-    setName(e.target.value);
-  }
-
-  function handleChangeSurname(e) {
-    e.preventDefault();
-    setSurname(e.target.value);
-  }
-
-  function handleChangesDesc(e) {
-    e.preventDefault();
-    setDesc(e.target.value);
-  }
-
-
 
   return (
     <div className="newUsers">
@@ -53,27 +39,33 @@ export function CreateUser({ upDateUsers }) {
           type="text"
           name="name"
           value={name}
-          onChange={(e) => handleChangeName(e)}
+          onChange={({ target }) => setName(target.value)}
           placeholder="New Name"
+          required
         />
         <input
           type="text" 
           name="surname" 
           value={surname} 
-          onChange={(e) => handleChangeSurname(e)} 
+          onChange={({ target }) =>  setSurname(target.value)} 
           placeholder="New Surname"
+          required
         />
         <textarea
           className="info__user-text newUser__about"
           type="textarea"
           name="info"
           value={desc}
-          onChange={(e) => handleChangesDesc(e)}
+          onChange={({ target }) => setDesc(target.value)}
           placeholder="About You"
           required
         ></textarea>
         <button className="waves-effect waves-light btn newUser__button" type="submit">Add</button>
       </form>
     </div>
-  )
-} 
+  );
+}
+
+CreateUser.propTypes = {
+  upDateUsers: PropTypes.func.isRequired,
+}

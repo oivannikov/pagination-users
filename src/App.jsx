@@ -50,17 +50,15 @@ function App() {
 
   return (
     <div className="container">
-      <Users
-        users={currentUsers}
-        handleSelectedUser={handleSelectedUser}
-      />
+      <Users users={currentUsers} handleSelectedUser={handleSelectedUser} />
 
       <Modal active={modalActive} setActive={setModalActive}>
-        <SelectedUser setModalActive={setModalActive} currentUser={currentUser} upDateUsers={upDateUsers}/>
+        <SelectedUser setModalActive={setModalActive} currentUser={currentUser} upDateUsers={upDateUsers} />
       </Modal>
 
       <CreateUser upDateUsers={upDateUsers}/>
-      <Pagination countPages={countPages} paginate={paginate} />
+
+      <Pagination countPages={countPages} paginate={paginate} currentPage={currentPage} />
     </div>
   );
 }
