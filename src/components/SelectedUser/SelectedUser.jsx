@@ -26,14 +26,6 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers, checkLa
     setModalActive(false);
   }
 
-  function handleCancalButton(e) {
-    e.preventDefault();
-    setCurrentName(name);
-    setCurrentSurname(surname);
-    setCurrentDesc(desc);
-    setModalActive(false);
-  }
-
   async function handleDeleteUser(e) {
     e.preventDefault();
     await deleteUser(id);
@@ -42,6 +34,13 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers, checkLa
     setModalActive(false);
   }
 
+  function handleCancelButton(e) {
+    e.preventDefault();
+    setCurrentDesc(desc);
+    setCurrentName(name);
+    setCurrentSurname(surname);
+    setModalActive(false);
+  }
   useEffect(() => {
     setCurrentName(name);
     setCurrentSurname(surname);
@@ -90,7 +89,7 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers, checkLa
         </div>
   
         <div>
-          <button className="info__user-cancel" onClick={(e) => handleCancalButton(e)}>Cancel</button>
+          <button className="info__user-cancel" onClick={(e) => handleCancelButton(e)}>Cancel</button>
           <button className="info__user-save" onClick={(e) => handleSaveButton(e)}>Save</button>
         </div>
       </div>

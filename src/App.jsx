@@ -58,7 +58,7 @@ function App() {
     <div className="container">
       <Users users={currentUsers} handleSelectedUser={handleSelectedUser} />
 
-      <Modal active={modalActive} setActive={setModalActive}>
+      <Modal active={modalActive} setActive={setModalActive}  currentUser={currentUser}>
         <SelectedUser
           setModalActive={setModalActive}
           currentUser={currentUser}
