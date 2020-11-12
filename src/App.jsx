@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { actionGetUsers, actionSetSelectedUser } from './redux/actions';
+import { actionSetUsers, actionSetSelectedUser, actionUpDateUsers } from './redux/actions';
 
 import { Users } from './components/Users/Users';
 import { Pagination } from './components/Pagination/Pagination';
 import { SelectedUser } from './components/SelectedUser/SelectedUser';
 import { Modal } from './components/Modal/Modal';
+import { CreateUser } from './components/CreateUser/CreateUser';
 
 import { getUsers } from './api/users';
 
@@ -17,14 +18,20 @@ function App() {
   const [modalActive, setModalActive] = useState(false);
 
   const dispatch = useDispatch();
+  const users = useSelector(state => state.users);
+  const currentUser = useSelector(state => state.currentUser);
 
   useEffect(() => {
     getUsers().then(users => {
-      dispatch(actionGetUsers(users))
+      dispatch(actionSetUsers(users))
     });
-  }, [dispatch]);
+  }, []);
 
-  const users = useSelector(state => state.users);
+  async function upDateUsers() {
+    const users = await getUsers();
+
+    dispatch(actionUpDateUsers(users));
+  }
 
   function paginate(numberPage) {
     setCurrentPage(numberPage);
@@ -49,12 +56,11 @@ function App() {
       />
 
       <Modal active={modalActive} setActive={setModalActive}>
-        <SelectedUser />
+        <SelectedUser setModalActive={setModalActive} currentUser={currentUser} upDateUsers={upDateUsers}/>
       </Modal>
 
-      <div className="bottom">
-        <Pagination countPages={countPages} paginate={paginate} />
-      </div>
+      <CreateUser upDateUsers={upDateUsers}/>
+      <Pagination countPages={countPages} paginate={paginate} />
     </div>
   );
 }

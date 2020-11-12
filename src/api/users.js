@@ -8,3 +8,15 @@ export async function getUsers() {
 
   return users;
 }
+
+export async function deleteUser(userId) {
+  return axios.delete(`${BASE_URL}/user/${userId}`);
+}
+
+export async function createdUser(user) {
+  return axios.post(`${BASE_URL}/users`, user);
+}
+
+export async function editCurrentUser(userId, user) {
+  return axios.put(`${BASE_URL}/user/${userId}`, user);
+}

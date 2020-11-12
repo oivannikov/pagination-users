@@ -1,6 +1,7 @@
 import {
-  GET_USERS,
-  SET_SELECTED_USER
+  SET_USERS,
+  SET_SELECTED_USER,
+  SET_UPDATE_USERS
 } from "./types";
 
 const initialState = {
@@ -10,7 +11,7 @@ const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USERS:
+    case SET_USERS:
       return {
         ...state,
         users: action.payload,
@@ -19,6 +20,12 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: action.payload,
+      }
+
+    case SET_UPDATE_USERS:
+      return {
+        ...state,
+        users: action.payload,
       }
     default: return state;
   }

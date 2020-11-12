@@ -1,6 +1,6 @@
 {
   "homepage": ".",
-  "name": "paginaton-users",
+  "name": "pagination-users",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

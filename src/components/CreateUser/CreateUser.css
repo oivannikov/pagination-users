@@ -1,0 +1,13 @@
+.newUser {
+  margin-top: 50px;
+}
+
+.newUser__button {
+  margin-top: 40px;
+  width: 115px;
+}
+
+.newUser__about {
+  margin-top: 30px;
+  padding: 0;
+}

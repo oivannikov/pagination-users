@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Pagination.css';
+
 export function Pagination({ countPages, paginate }) {
   const pageNumbers = [];
 
@@ -10,9 +12,11 @@ export function Pagination({ countPages, paginate }) {
   return (
     <ul className="pagination">
       { pageNumbers.map(number =>  (
-        <li className="waves-effect" key={number} >
-          <a onClick={() => paginate(number)}  href="#">{number}</a>
-        </li>
+        <>
+          <li className="waves-effect" key={number} >
+            <a onClick={() => paginate(number)}  href="#">{number}</a>
+          </li>
+        </>
       ))}
   </ul>
   )

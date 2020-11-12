@@ -1,2 +1,3 @@
-export const GET_USERS = "GET_USERS";
+export const SET_USERS = "GET_USERS";
 export const SET_SELECTED_USER = "SET_SELECTED_USER";
+export const SET_UPDATE_USERS = "SET_UPDATE_USERS";
