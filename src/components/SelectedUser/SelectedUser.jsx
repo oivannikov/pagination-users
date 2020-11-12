@@ -41,6 +41,7 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers, checkLa
     setCurrentSurname(surname);
     setModalActive(false);
   }
+
   useEffect(() => {
     setCurrentName(name);
     setCurrentSurname(surname);
