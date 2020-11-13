@@ -1,2 +1,4 @@
-RewriteCond %{HTTP:X-HTTPS} ^1$
-RewriteRule .? - [E=HTTPS:on]
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
