@@ -1,0 +1,2 @@
+RewriteCond %{HTTP:X-HTTPS} ^1$
+RewriteRule .? - [E=HTTPS:on]
