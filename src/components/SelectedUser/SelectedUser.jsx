@@ -28,10 +28,15 @@ export function SelectedUser({ setModalActive, currentUser, upDateUsers, checkLa
 
   async function handleDeleteUser(e) {
     e.preventDefault();
-    await deleteUser(id);
-    checkLastUser();
-    upDateUsers();
-    setModalActive(false);
+
+    const shoudRemove = confirm('Are you sure you want to delete the user?');
+
+    if (shoudRemove) {
+      await deleteUser(id);
+      checkLastUser();
+      upDateUsers();
+      setModalActive(false);
+    }
   }
 
   function handleCancelButton(e) {
